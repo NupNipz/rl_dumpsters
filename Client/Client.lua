@@ -25,17 +25,7 @@ AddEventHandler(
             for Index = 1, #SearchedDumpsters do
                 if SearchedDumpsters[Entity] == nil then
                     Searching = true
-                    lib.notify({ 
-                        title = "Dumpster", 
-                        description = "You started searching the dumpster",
-                        duration = 2500,
-                        position = "bottom",
-                        type = "info", 
-                        style = {
-                            backgroundColor = "#131121",
-                            color = "#ffffff"
-                        },
-                    })
+                    Notify("You started searching the dumpster", "info")
                     if lib.progressBar({
                         duration = math.random(9000, 11000),
                         label = "Searching Dumpster...",
@@ -55,17 +45,7 @@ AddEventHandler(
                         Searching = false
                     end
                 else
-                    lib.notify({ 
-                        title = "Dumpster", 
-                        description = "This dumpster has already been searched!",
-                        duration = 2500,
-                        position = "bottom",
-                        type = "error", 
-                        style = {
-                            backgroundColor = "#131121",
-                            color = "#ffffff"
-                        },
-                    })
+                    Notify("This dumpster has already been searched", "error")
                 end
             end
         end
@@ -82,3 +62,17 @@ AddEventHandler(
         end
     end
 )
+
+function Notify(Text, Type)
+    lib.notify({ 
+        title = "Dumpster", 
+        description = Text,
+        duration = 2500,
+        position = "bottom",
+        type = Type, 
+        style = {
+            backgroundColor = "#131121",
+            color = "#ffffff"
+        },
+    })
+end

@@ -4,7 +4,6 @@ lua54 "yes"
 
 dependencies {
     "ox_lib",
-    "rl_lib",
     "ox_target",
 }
 

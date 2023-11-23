@@ -18,23 +18,27 @@ AddEventHandler(
                     Item, 
                     Amount
                 )
-                lib.notify(Source, { 
-                    title = "Dumpster", 
-                    description = "You found: " .. Item .. " " ..Amount.. "x",
-                    duration = 2500,
-                    position = "bottom",
-                    type = "success", 
-                    style = {
-                        backgroundColor = "#131121",
-                        color = "#ffffff"
-                    },
-                })
+                Notify(Source, "You found: " .. Item .. " " ..Amount.. "x", "success")
             end
         else
             print("ERROR")
         end
     end
 )
+
+function Notify(Source, Text, Type)
+    lib.notify(Source, { 
+        title = "Dumpster", 
+        description = Text,
+        duration = 2500,
+        position = "bottom",
+        type = Type, 
+        style = {
+            backgroundColor = "#131121",    
+            color = "#ffffff"
+        },
+    })
+end
 
 function RandomItem()
     local Chance, ChanceVal = math.random(), 0
